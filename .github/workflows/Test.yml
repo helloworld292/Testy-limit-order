@@ -2,6 +2,8 @@ name: Daily Order Conversion
 on:
   schedule:
     - cron: '0 11 * * *'  # 11:00 UTC = 6:00 AM ET (adjust for DST if needed; currently for EST)
+  workflow_dispatch:
+  
 jobs:
   run-python-script:
     runs-on: ubuntu-latest
