@@ -1,8 +1,8 @@
 Date(YYYY-MM-DD),Action(buy/sell),TriggerPrice,Number of units,Ticker,Status
 2025-06-23,Buy,160,6500,RTX,Active
-2025-06-23,Buy,180,6500,RTX,Active
-2025-06-23,Sell,170,7000,RTX,Active
+2025-06-23,Buy,180,6500,RTX,Complete
+2025-06-23,Sell,170,7000,RTX,Complete
 2025-06-23,Sell,200,7000,RTX,Active
-2025-06-23,Sell,170,7000,RTX,Active
-2025-06-23,Sell,260,7000,AAPL,Active
-2025-06-23,Sell,260,7000,AAPL,Active
+2025-06-23,Sell,170,7000,RTX,Complete
+2025-06-23,Sell,260,7000,AAPL,Complete
+2025-06-23,Sell,260,7000,AAPL,Complete
