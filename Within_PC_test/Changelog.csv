@@ -1,10 +1,3 @@
 Date, Action,Action
 2025-00-00,Added Buy order of TEST,
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Buy', 'Number of units': 6500, 'Ticker': 'RTX'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'RTX'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'RTX'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'AAPL'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'AAPL'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'RTX'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'AAPL'}"
-2025-12-18,,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-18', 'Action(buy/sell)': 'Sell', 'Number of units': 7000, 'Ticker': 'AAPL'}"
+
