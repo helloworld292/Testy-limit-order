@@ -24,5 +24,11 @@ jobs:
       
       - name: Run Python script
         run: python Within_PC_test/Test_code.py
+      
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: Within_PC_test/'Changelog.csv'
+
 
 
