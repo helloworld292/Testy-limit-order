@@ -23,4 +23,4 @@ jobs:
           pip install pandas yfinance      
       
       - name: Run Python script
-        run: python actionstest.py
+        run: Within PC test/Test_code.py
