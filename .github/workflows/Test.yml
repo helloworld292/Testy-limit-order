@@ -24,3 +24,5 @@ jobs:
       
       - name: Run Python script
         run: python Test_code.py
+
+
