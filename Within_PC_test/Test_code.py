@@ -3,13 +3,13 @@ import yfinance as yf
 from datetime import datetime, timedelta
 import os
 
-Actual_order_list = ['Within PC test/Actual_Orders_lists_A.csv','Within PC test/Actual_Orders_lists_B.csv']
-Limit_order_list = ['Within PC test/Limit_order_A.csv','Within PC test/Limit_order_B.csv']
+Actual_order_list = ['Within_PC_test/Actual_Orders_lists_A.csv','Within_PC_test/Actual_Orders_lists_B.csv']
+Limit_order_list = ['Within_PC_test/Limit_order_A.csv','Within_PC_test/Limit_order_B.csv']
 
 for i in range(2):
     LIMIT_ORDER_FILE = Limit_order_list[i]
     BUY_SELL_FILE = Actual_order_list[i]
-    CHANGELOG = 'Within PC test/Changelog.csv'
+    CHANGELOG = 'Within_PC_test/Changelog.csv'
 
     #today = datetime.now().date()
     #today_str = today.strftime('%Y-%m-%d')
