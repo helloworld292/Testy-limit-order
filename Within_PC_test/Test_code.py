@@ -11,11 +11,17 @@ for i in range(2):
     BUY_SELL_FILE = Actual_order_list[i]
     CHANGELOG = 'Within_PC_test/Changelog.csv'
 
-    #today = datetime.now().date()
-    #today_str = today.strftime('%Y-%m-%d')
+    today = datetime.now().date()
+    yesterday = today - timedelta(days=1)
+#change sundays to saturdays
+    if yesterday.weekday() == 6:
+        yesterday = yesterday - timedelta(days=1)
+    
+    yesterday_str = yesterday.strftime('%Y-%m-%d')
+    today_str = today.strftime('%Y-%m-%d')
 
-    today_str = "2025-12-18"
-    yesterday_str = '2025-12-17'
+    #today_str = "2025-12-21"
+    #yesterday_str = '2025-12-20'
 
     if os.path.exists(LIMIT_ORDER_FILE):
         df_orders = pd.read_csv(LIMIT_ORDER_FILE)
