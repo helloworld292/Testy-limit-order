@@ -1,3 +1,4 @@
 Date(YYYY-MM-DD),Action(buy/sell),Number of units,Ticker
 2025-12-18,Sell,7000,RTX
 2025-12-18,Sell,7000,AAPL
+2025-12-23,Buy,100,AAPL
