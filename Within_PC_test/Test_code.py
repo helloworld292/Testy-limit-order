@@ -48,8 +48,8 @@ for i in range(2):
         if df_orders.loc[index,'Status'] == 'Complete':
             continue
 
-        #Check if order is only made today
-        if df_orders.loc[index, 'Date(YYYY-MM-DD)'] == today_str:
+        #Check if order date is valid
+        if df_orders.loc[index, 'Date(YYYY-MM-DD)'] >= today_str:
             continue
         
         # Fetch yesterday's high and low
@@ -66,11 +66,12 @@ for i in range(2):
         
         # Determine if triggered
         triggered = False
-        if row['Action(buy/sell)'].lower().strip() == 'buy' and low_price <= row['TriggerPrice']:
+        if row['Action(buy/sell)'].lower().strip() == 'buy(l)' and low_price <= row['TriggerPrice']:
             triggered = True
-        elif row['Action(buy/sell)'].lower().strip() == 'sell' and high_price >= row['TriggerPrice']:
+        elif row['Action(buy/sell)'].lower().strip() == 'sell(l)' and high_price >= row['TriggerPrice']:
             triggered = True
-            
+        #ADD LIMIT ORDERS
+
         if triggered:
         # Complete the order
             df_orders.loc[index,'Status'] = 'Complete'
