@@ -14,8 +14,8 @@ for i in range(2):
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
 #ignore sundays and saturdays
-    if yesterday.weekday() == 6 or yesterday.weekday() == 5:
-        continue
+#   if yesterday.weekday() == 6 or yesterday.weekday() == 5:
+#        continue
     
     yesterday_str = yesterday.strftime('%Y-%m-%d')
     today_str = today.strftime('%Y-%m-%d')
@@ -46,6 +46,10 @@ for i in range(2):
     for index, row in df_orders.iterrows():
         #Check if the order is already complete
         if df_orders.loc[index,'Status'] == 'Complete':
+            continue
+
+        #Check if order is only made today
+        if df_orders.loc[index, 'Date(YYYY-MM-DD)'] == today_str:
             continue
         
         # Fetch yesterday's high and low

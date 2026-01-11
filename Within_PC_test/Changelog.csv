@@ -8,3 +8,4 @@ Date,Action
 2025-12-23,"Triggered and added {'Date(YYYY-MM-DD)': '2025-12-23', 'Action(buy/sell)': 'Sell', 'Number of units': 100, 'Ticker': 'AAPL'}"
 2026-01-11,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-11', 'Action(buy/sell)': 'Buy', 'Number of units': 100, 'Ticker': 'AAPL'}"
 2026-01-11,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-10', 'Action(buy/sell)': 'Buy', 'Number of units': 100, 'Ticker': 'AAPL'}"
+2026-01-10,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-10', 'Action(buy/sell)': 'Sell', 'Number of units': 100, 'Ticker': 'AAPL'}"
