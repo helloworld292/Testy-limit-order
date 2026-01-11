@@ -13,9 +13,9 @@ for i in range(2):
 
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
-#change sundays to saturdays
-    if yesterday.weekday() == 6:
-        yesterday = yesterday - timedelta(days=1)
+#ignore sundays and saturdays
+    if yesterday.weekday() == 6 or yesterday.weekday() == 5:
+        continue
     
     yesterday_str = yesterday.strftime('%Y-%m-%d')
     today_str = today.strftime('%Y-%m-%d')
@@ -26,13 +26,13 @@ for i in range(2):
     if os.path.exists(LIMIT_ORDER_FILE):
         df_orders = pd.read_csv(LIMIT_ORDER_FILE)
     else:
-        print("No stop/limit file found. Exiting.")
-        exit(0)
+        print("No stop/limit file found.")
+        continue
 
     if os.path.exists(BUY_SELL_FILE):
         df_buy_sell = pd.read_csv(BUY_SELL_FILE)
     else:
-        df_buy_sell = pd.DataFrame(columns=['Date', 'Action', 'Number of units', 'Ticker'])
+        df_buy_sell = pd.DataFrame(columns=['Date(YYYY-MM-DD)', 'Action(buy/sell)', 'Number of units', 'Ticker'])
 
     if os.path.exists(CHANGELOG):
         changelog = pd.read_csv(CHANGELOG)
@@ -40,6 +40,8 @@ for i in range(2):
         changelog = pd.DataFrame(columns=['Date','Action'])
     print(changelog)
 
+    #strip whitespace & change to str
+    df_orders.columns = df_orders.columns.str.strip()
 
     for index, row in df_orders.iterrows():
         #Check if the order is already complete
@@ -60,9 +62,9 @@ for i in range(2):
         
         # Determine if triggered
         triggered = False
-        if row['Action(buy/sell)'] == 'Buy' and low_price <= row['TriggerPrice']:
+        if row['Action(buy/sell)'].lower().strip() == 'buy' and low_price <= row['TriggerPrice']:
             triggered = True
-        elif row['Action(buy/sell)'] == 'Sell' and high_price >= row['TriggerPrice']:
+        elif row['Action(buy/sell)'].lower().strip() == 'sell' and high_price >= row['TriggerPrice']:
             triggered = True
             
         if triggered:
@@ -71,7 +73,7 @@ for i in range(2):
         
         # Append to buy/sell
             new_row_limit_order = {
-                'Date(YYYY-MM-DD)': today_str,
+                'Date(YYYY-MM-DD)': yesterday_str,
                 'Action(buy/sell)': row['Action(buy/sell)'],
                 'Number of units': int(row['Number of units']),
                 'Ticker': row['Ticker']
@@ -80,7 +82,7 @@ for i in range(2):
             print(f"Triggered and added: {new_row_limit_order}")
 
             new_row_changelog = {
-                'Date':today_str,
+                'Date':yesterday_str,
                 'Action': f'Triggered and added {new_row_limit_order}'
             }
             changelog = pd.concat([changelog, pd.DataFrame([new_row_changelog])], ignore_index=True)
