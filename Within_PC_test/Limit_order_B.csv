@@ -1,11 +1,9 @@
-Date(YYYY-MM-DD),Action(buy/sell),TriggerPrice,Number of units,Ticker,Status
-2025-06-23,Sell,200,7000,RTX,Active
-2025-06-23,Sell,170,7000,RTX,Complete
-2025-06-23,Sell,260,7000,AAPL,Complete
-2025-06-23,Sell,260,7000,AAPL,Complete
-2025-12-22,Sell,1000,100,AAPL,Active
-2025-12-22,Sell,240,100,AAPL,Complete
-2025-01-10,Sell,10,100,AAPL,Complete
-2025-01-10,Sell,1000,100,AAPL,Active
-2025-01-10,buy,1000,100,AAPL,Complete
-2025-01-10,buy,10,100,AAPL,Active
+Date(YYYY-MM-DD),Action(lb/ls/sl/sb),TriggerPrice,Number of units,Ticker,Status
+2025-01-02,limitbuy,1000.0,100,AAPL,Complete
+2025-01-03,limitbuy,260.8,100,AAPL,Complete
+2025-01-04,limitbuy,258.0,100,AAPL,Complete
+2025-01-01,limitbuy,10.0,100,AAPL,Active
+2025-01-06,limitsell,1000.0,100,AAPL,Active
+2025-01-07,limitsell,260.8,100,AAPL,Complete
+2025-01-08,limitsell,258.0,100,AAPL,Complete
+2025-01-05,limitsell,10.0,100,AAPL,Complete

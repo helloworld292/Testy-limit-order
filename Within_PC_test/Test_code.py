@@ -14,14 +14,15 @@ for i in range(2):
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
 #ignore sundays and saturdays
-#   if yesterday.weekday() == 6 or yesterday.weekday() == 5:
-#        continue
+    if yesterday.weekday() == 6 or yesterday.weekday() == 5:
+        continue
     
     yesterday_str = yesterday.strftime('%Y-%m-%d')
     today_str = today.strftime('%Y-%m-%d')
 
-    #today_str = "2025-12-21"
-    #yesterday_str = '2025-12-20'
+#dates for showcase
+    #today_str = "2026-01-16"
+    #yesterday_str = "2026-01-15"
 
     if os.path.exists(LIMIT_ORDER_FILE):
         df_orders = pd.read_csv(LIMIT_ORDER_FILE)
@@ -32,7 +33,7 @@ for i in range(2):
     if os.path.exists(BUY_SELL_FILE):
         df_buy_sell = pd.read_csv(BUY_SELL_FILE)
     else:
-        df_buy_sell = pd.DataFrame(columns=['Date(YYYY-MM-DD)', 'Action(buy/sell)', 'Number of units', 'Ticker'])
+        df_buy_sell = pd.DataFrame(columns=['Date(YYYY-MM-DD)', 'Action(buy/sell)', 'Number of units', 'Ticker','Price'])
 
     if os.path.exists(CHANGELOG):
         changelog = pd.read_csv(CHANGELOG)
@@ -43,6 +44,7 @@ for i in range(2):
     #strip whitespace & change to str
     df_orders.columns = df_orders.columns.str.strip()
 
+    #Actual Order handling
     for index, row in df_orders.iterrows():
         #Check if the order is already complete
         if df_orders.loc[index,'Status'] == 'Complete':
@@ -60,28 +62,65 @@ for i in range(2):
                 continue
             high_price = stock_data['High'].iloc[0].values[0]
             low_price = stock_data['Low'].iloc[0].values[0]
+            open_price = stock_data['Open'].iloc[0].values[0]
         except Exception as e:
             print(f"Error fetching {row['Ticker']}: {e}. Skipping.")
             continue
         
         # Determine if triggered
+        #LIMIT ORDERS
         triggered = False
-        if row['Action(buy/sell)'].lower().strip() == 'buy(l)' and low_price <= row['TriggerPrice']:
+        if row['Action(lb/ls/sl/sb)'].lower().strip() == 'limitbuy' and low_price <= row['TriggerPrice']:
             triggered = True
-        elif row['Action(buy/sell)'].lower().strip() == 'sell(l)' and high_price >= row['TriggerPrice']:
+        elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'limitsell' and high_price >= row['TriggerPrice']:
             triggered = True
-        #ADD LIMIT ORDERS
+        
+        #STOP LOSS AND STOP BUY
+        elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'stoploss' and low_price <= row['TriggerPrice']:
+            triggered = True
+        elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'stopbuy' and high_price >= row['TriggerPrice']:
+            triggered = True
 
         if triggered:
         # Complete the order
             df_orders.loc[index,'Status'] = 'Complete'
-        
+
+        #Figure out correct price and action
+            if row['Action(lb/ls/sl/sb)'].lower().strip() == 'limitbuy':
+                Executed_action = 'buy'
+                if row['TriggerPrice'] >= open_price:
+                    Executed_price = open_price
+                elif row['TriggerPrice'] <= open_price and row['TriggerPrice'] >= low_price:
+                    Executed_price = float(row['TriggerPrice'])
+            
+            elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'limitsell':
+                Executed_action = 'sell'
+                if row['TriggerPrice'] <= open_price:
+                    Executed_price = open_price
+                elif row['TriggerPrice'] >= open_price and row['TriggerPrice'] <= high_price:
+                    Executed_price = float(row['TriggerPrice'])
+                
+            elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'stoploss':
+                Executed_action = 'sell'
+                if row['TriggerPrice'] >= open_price:
+                    Executed_price = open_price
+                elif row['TriggerPrice'] <= open_price and row['TriggerPrice'] >= low_price:
+                    Executed_price = float(row['TriggerPrice'])
+            
+            elif row['Action(lb/ls/sl/sb)'].lower().strip() == 'stopbuy':
+                Executed_action = 'buy'
+                if row['TriggerPrice'] <= open_price:
+                    Executed_price = open_price
+                elif row['TriggerPrice'] >= open_price and row['TriggerPrice'] <= high_price:
+                    Executed_price = float(row['TriggerPrice'])
+
         # Append to buy/sell
             new_row_limit_order = {
                 'Date(YYYY-MM-DD)': yesterday_str,
-                'Action(buy/sell)': row['Action(buy/sell)'],
+                'Action(buy/sell)': Executed_action,
                 'Number of units': int(row['Number of units']),
-                'Ticker': row['Ticker']
+                'Ticker': row['Ticker'],
+                'Price': Executed_price
             }
             df_buy_sell = pd.concat([df_buy_sell, pd.DataFrame([new_row_limit_order])], ignore_index=True)
             print(f"Triggered and added: {new_row_limit_order}")

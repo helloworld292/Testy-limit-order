@@ -1,4 +1,14 @@
 Date,Action
 2025-00-00,Added Buy order of TEST
-2026-01-10,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-10', 'Action(buy/sell)': 'Sell', 'Number of units': 100, 'Ticker': 'AAPL'}"
-2026-01-10,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-10', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL'}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': 258.0}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': 260.8}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'buy', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': 258.0}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': 260.8}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
+2026-01-15,"Triggered and added {'Date(YYYY-MM-DD)': '2026-01-15', 'Action(buy/sell)': 'sell', 'Number of units': 100, 'Ticker': 'AAPL', 'Price': np.float64(260.6499938964844)}"
