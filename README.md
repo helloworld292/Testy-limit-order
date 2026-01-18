@@ -33,5 +33,5 @@ Is the stop buy order, if prices reach above the trigger price, then the number 
 
 Notes:
 1. Currently, the program has yet to be tested properly so may have a low tolerenance for user input error and any formats that are non-standard will likely result in a order just being skipped. Please follow the proper expected formatting requirements
-2. The program executes at 11am (hkt) everyday and checks for yesterday's prices. This is to ensure that yfinance has all the data for all the markets around the world. Orders placed on the date will be ingored until the next day. (e.g. A order placed on Jan 10 will only be noted as valid when the program is checking for Jan 11 orders)
+2. The program executes at 11am (hkt) everyday and checks for yesterday's prices. This is to ensure that yfinance has all the data for all the markets around the world. Orders placed on the date will be ingored until the next day. (e.g. A order placed on Jan 10 will only be treated as valid when the program is checking for Jan 11 orders)
 

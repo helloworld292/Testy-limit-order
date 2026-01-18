@@ -51,7 +51,7 @@ for i in range(2):
             continue
 
         #Check if order date is valid
-        if df_orders.loc[index, 'Date(YYYY-MM-DD)'] >= today_str:
+        if df_orders.loc[index, 'Date(YYYY-MM-DD)'] >= yesterday_str:
             continue
         
         # Fetch yesterday's high and low
